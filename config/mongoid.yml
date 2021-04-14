@@ -1,0 +1,6 @@
+development:
+  clients:
+    default:
+      uri: mongodb+srv://gtzambranop:pass6834@jointroute.c8zri.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+      options:
+        server_selection_timeout: 5
