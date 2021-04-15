@@ -2,9 +2,9 @@ class Route
   include Mongoid::Document
   #include Mongoid::Timestamps
 
-  field :calification, type: Integer
-  field :latitude, type: Integer
-  field :longitude, type: Integer
+  field :calification, type: Float
+  field :latitude, type: Float
+  field :longitude, type: Float
   field :members, type: User
   field :creator, type: User
   field :chat, type: Chat

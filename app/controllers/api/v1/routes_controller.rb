@@ -10,8 +10,8 @@ class Api::V1::RoutesController < ApplicationController
 
   # GET /routes/1
   def show
-    #render json: @route
-    render :show
+    render json: @route
+    #render :show
   end
 
   # POST /routes
@@ -51,7 +51,7 @@ class Api::V1::RoutesController < ApplicationController
       #params.require(:route).permit(:calification, :latitude, :longitude)
       params.require(:route)
       .permit(:calification, :latitude, :longitude,
-        creator: [ :name ], members: [ :name ],
-        chat: [ :name, message: [ :content, creator: [ :name ] ] ] )
+        creator: [ :name, :id2 ], members: [ :name, :id2 ],
+        chat: [ :name, message: [ :content, creator: [ :name, :id2 ] ] ] )
     end
 end

@@ -2,22 +2,48 @@
 
 Microservicio encargado de las rutas conjuntas.
 
-Things you may want to cover:
+## Correr contenedor
 
-* Ruby version
+1. Generar imagen
 
-* System dependencies
+  ```bash
+  docker-compose build
+  ```
 
-* Configuration
+2. Crear Contenedor
 
-* Database creation
+  ```bash
+  docker-compose up
+  ```
+## Requests de prueba
 
-* Database initialization
+En la ruta `requests/v1/` está el script `route.sh`, este genera request de prueba. Para ejecutarlo, siga estos pasos:
 
-* How to run the test suite
+1. Dele permisos al script
 
-* Services (job queues, cache servers, search engines, etc.)
+  ```bash
+  chmod +x route.sh
+  ```
+2. Ejecútelo y elija una petición
 
-* Deployment instructions
+  ```bash
+  ./route.sh [OPTION] [:id]
+  ```
 
-* ...
+  Las opciones disponibles son:
+
+  - PUT
+  - GET
+  - GET :id
+  - PUT :id
+  - DELETE :id
+
+## Posibles errores
+
+- A server is already running. Check /app/tmp/pids/server.pid
+
+  **Solución:**
+
+  ```bash
+  rm tmp/pids/server.pid
+  ```
