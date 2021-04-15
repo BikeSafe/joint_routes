@@ -7,7 +7,25 @@ then
   '{
     "calification" : 1,
     "latitude" : 1,
-    "longitude" : 3
+    "longitude" : 3,
+    "creator" : {"name":"Tatis"},
+    "members" : [
+      {"name" : "Guiselle"},
+      {"name" : "Hola"}
+    ],
+    "chat" : {
+      "name" : "HOOLA",
+      "message" : [
+        {
+          "content" : "test",
+          "creator" : {"name" : "TAZT"}
+        },
+        {
+          "content" : "test",
+          "creator" : {"name" : "TAZT"}
+        }
+      ]
+    }
   }'
 
 elif [[ $1 == "GET" ]]
@@ -18,14 +36,14 @@ then
     printf "\nGET specific category\n\n"
 
     curl -i -H "Content-Type:application/json" -X \
-    GET http://localhost:3000/routes/$2
+    GET http://localhost:3000/api/v1/routes/$2
 
     printf "\n\n"
   else
     printf "\nGET products\n\n"
 
     curl -i -H "Content-Type:application/json" -X \
-    GET http://localhost:3000/routes/
+    GET http://localhost:3000/api/v1/routes/
 
     printf "\n\n"
   fi
@@ -36,13 +54,11 @@ then
   printf "\nPUT specific category\n\n"
 
   curl -i -H "Content-Type:application/json" -X \
-  PUT http://localhost:3000/routes/$2 -d \
+  PUT http://localhost:3000/api/v1/routes/$2 -d \
   '{
-    "name": "Product EDITED",
-    "description": "Description - Product EDITED",
-    "category": 2,
-    "unit_measurement": "Grams",
-    "quantity": 34
+    "calification" : 1,
+    "latitude" : 1,
+    "longitude" : 3
   }'
 
   printf "\n\n"
@@ -52,7 +68,7 @@ then
 
   printf "\nDELETE specific category\n\n"
 
-  curl -X DELETE http://localhost:3000/routes/$2
+  curl -X DELETE http://localhost:3000/api/v1/routes/$2
 
   printf "\n\n"
 
@@ -63,6 +79,6 @@ else
   \nGET\
   \nGET id\
   \nPUT id\
-  \nDELETE id"
+  \nDELETE id\n\n"
 
 fi

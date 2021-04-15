@@ -10,8 +10,7 @@ class RoutesController < ApplicationController
 
   # GET /routes/1
   def show
-    #render json: @route
-    render :show
+    render json: @route
   end
 
   # POST /routes
@@ -47,6 +46,6 @@ class RoutesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def route_params
-      params.require(:route).permit(:calification, :latitude, :longitude)
+      params.fetch(:route, {})
     end
 end

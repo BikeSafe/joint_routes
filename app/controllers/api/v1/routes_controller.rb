@@ -48,6 +48,10 @@ class Api::V1::RoutesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def route_params
-      params.require(:route).permit(:calification, :latitude, :longitude)
+      #params.require(:route).permit(:calification, :latitude, :longitude)
+      params.require(:route)
+      .permit(:calification, :latitude, :longitude,
+        creator: [ :name ], members: [ :name ],
+        chat: [ :name, message: [ :content, creator: [ :name ] ] ] )
     end
 end
