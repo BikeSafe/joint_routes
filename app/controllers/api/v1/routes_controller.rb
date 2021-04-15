@@ -10,8 +10,8 @@ class Api::V1::RoutesController < ApplicationController
 
   # GET /routes/1
   def show
-    #render json: @route
-    render :show
+    render json: @route
+    #render :show
   end
 
   # POST /routes
@@ -48,6 +48,10 @@ class Api::V1::RoutesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def route_params
-      params.require(:route).permit(:calification, :latitude, :longitude)
+      #params.require(:route).permit(:calification, :latitude, :longitude)
+      params.require(:route)
+      .permit(:calification, :latitude, :longitude,
+        creator: [ :name, :id2 ], members: [ :name, :id2 ],
+        chat: [ :name, message: [ :content, creator: [ :name, :id2 ] ] ] )
     end
 end
