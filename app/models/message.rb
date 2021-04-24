@@ -1,6 +1,6 @@
 class Message
   include Mongoid::Document
-  #include Mongoid::Timestamps::Created
+  include Mongoid::Timestamps::Created
 
   field :content, type: String
   field :creator, type: User
