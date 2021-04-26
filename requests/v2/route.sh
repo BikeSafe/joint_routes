@@ -16,11 +16,23 @@ then
       "latitude" : 2,
       "longitude" : 6.5
     },
-    "creator" : {"name":"Juan", "id2": 1},
     "members" : [
       {"name" : "Pepito", "id2": 2},
       {"name" : "Pepito", "id2": 2}
-    ]
+    ],
+    "chat" : {
+      "name" : "Chat Editado",
+      "message" : [
+        {
+          "content" : "Lo odio",
+          "creator" : {"name" : "Pepito", "id2": 2}
+        },
+        {
+          "content" : "test",
+          "creator" : {"Yo más" : "Juan", "id2": 1}
+        }
+      ]
+    }
   }'
 
 elif [[ $1 == "GET" ]]

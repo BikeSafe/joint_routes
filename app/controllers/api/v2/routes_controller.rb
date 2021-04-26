@@ -24,6 +24,7 @@ class Api::V2::RoutesController < ApplicationController
       @user = User.new(route_users[:members][i])
       @route.members.push(@user)
     end
+    puts(@route.members.length())
 
     if @route.save
       render json: @route, status: :created, location: url_for([:api, :v2, @route])
@@ -62,7 +63,8 @@ class Api::V2::RoutesController < ApplicationController
       #params.require(:route).permit(:calification, :latitude, :longitude)
       params.require(:route)
       .permit(:name, :rating, :private, :done, :startTime, :endTime,
-        origin: [ :longitude, :latitude ], destination: [ :longitude, :latitude ])
+        origin: [ :longitude, :latitude ], destination: [ :longitude, :latitude ],
+        chat: [ :name, message: [ :content, creator: [ :name, :id2 ] ] ])
     end
 
     def route_users

@@ -6,5 +6,5 @@ class Message
   field :creator, type: User
 
   embedded_in :chat, class_name: "Chat"
-  embeds_one :creator, class_name: "User"
+  #has_one :creator, class_name: "User"
 end

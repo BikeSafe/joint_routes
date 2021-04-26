@@ -9,13 +9,13 @@ class Route
   field :startTime, type: DateTime
   field :endTime, type: DateTime
   field :members, type: User
-  #field :chat, type: Chat
+  field :chat, type: Chat
   field :origin, type: Position
   field :destination, type: Position
 
   #embeds_many :members, class_name: "User"
   #embeds_one :creator, class_name: "User"
-  #embeds_one :chat, class_name: "Chat"
+  embeds_one :chat, class_name: "Chat"
 
   has_and_belongs_to_many :members, class_name: "User"
   embeds_one :origin, class_name: "Position"
