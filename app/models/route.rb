@@ -8,17 +8,17 @@ class Route
   field :done, type: Boolean
   field :startTime, type: DateTime
   field :endTime, type: DateTime
-  #field :members, type: User
-  #field :creator, type: User
+  field :members, type: User
   #field :chat, type: Chat
   field :origin, type: Position
   field :destination, type: Position
-  field :creator, type: User
 
   #embeds_many :members, class_name: "User"
   #embeds_one :creator, class_name: "User"
   #embeds_one :chat, class_name: "Chat"
-  has_one :creator, class_name: "User"
+
+  has_and_belongs_to_many :members, class_name: "User"
   embeds_one :origin, class_name: "Position"
   embeds_one :destination, class_name: "Position"
+  #accepts_nested_attributes_for :users
 end

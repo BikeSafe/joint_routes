@@ -16,10 +16,11 @@ then
       "latitude" : 2,
       "longitude" : 6.5
     },
-    "creator" : {
-      "id2" : 4,
-      "name" : "Tatiana"
-    }
+    "creator" : {"name":"Juan", "id2": 1},
+    "members" : [
+      {"name" : "Pepito", "id2": 2},
+      {"name" : "Pepito", "id2": 2}
+    ]
   }'
 
 elif [[ $1 == "GET" ]]

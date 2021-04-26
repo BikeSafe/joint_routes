@@ -17,12 +17,20 @@ class Api::V2::RoutesController < ApplicationController
   # POST /routes
   def create
     @route = Route.new(route_params)
-    @creator = User.new(route_params[:creator])
-    puts("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa")
-    puts(route_params[:creator])
+
+    @route.members = Array.new
+    l = route_users[:members].length()
+    for i in 0...l
+      @user = User.new(route_users[:members][i])
+      @route.members.push(@user)
+    end
 
     if @route.save
-      render json: @route, status: :created, location: url_for([:api, :v1, @route])
+      render json: @route, status: :created, location: url_for([:api, :v2, @route])
+      l = route_users[:members].length()
+      for i in 0...l
+        @route.members[i].save
+      end
 
     else
       render json: @route.errors, status: :unprocessable_entity
@@ -54,7 +62,11 @@ class Api::V2::RoutesController < ApplicationController
       #params.require(:route).permit(:calification, :latitude, :longitude)
       params.require(:route)
       .permit(:name, :rating, :private, :done, :startTime, :endTime,
-        origin: [ :longitude, :latitude ], destination: [ :longitude, :latitude ],
-        creator: [ :id2, :name ])
+        origin: [ :longitude, :latitude ], destination: [ :longitude, :latitude ])
+    end
+
+    def route_users
+      params.require(:route)
+      .permit(members: [ :id2, :name ])
     end
 end

@@ -3,8 +3,10 @@ class User
 
   field :name, type: String
   field :id2, type: Integer
+  field :routes, type: Route
 
-  belongs_to :route
+  has_and_belongs_to_many :routes, class_name: "Route"
   #embedded_in :route, class_name: "Route"
   #embedded_in :message, class_name: "Message"
+  #accepts_nested_attributes_for :route
 end
