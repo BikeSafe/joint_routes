@@ -4,4 +4,9 @@ Rails.application.routes.draw do
       resources :routes
     end
   end
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v2 do
+      resources :routes
+    end
+  end
 end
